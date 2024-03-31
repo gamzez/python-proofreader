@@ -9,7 +9,7 @@ with open('openai_api_key.txt') as f:
     api_key = f.readline().strip()
 openai.api_key = api_key
 
-def proofread(text):
+def text_correcter(text):
     # Define the prompt for the AI, instructing it to correct the provided text.
     system_role = "Korrigiere den folgenden deutschen Text und gib mir die korrigierte Version. Mach keine Erklärungen, gib nur den korrigierten Text zurück. Wenn der Text bereits korrekt ist, gib den Originaltext zurück."
     messages = [
@@ -40,10 +40,10 @@ def remove_space_before_punctuation(text):
 def count_words(s):
     return sum([i.strip(string.punctuation).isalpha() for i in s.split()])
 
-def grammarly(text_wErrors):
+def proofreader(text_wErrors):
     # Preprocess the text for better comparison and correction.
     text_wErrors = remove_space_before_punctuation(text_wErrors)
-    text_corrected = proofread(text_wErrors)
+    text_corrected = text_correcter(text_wErrors)
     
     # Remove punctuation for comparison purposes.
     text_wErrors_no_commas_dots = remove_commas_and_dots(text_wErrors)
@@ -83,7 +83,7 @@ def grammarly(text_wErrors):
     
 if __name__ == "__main__":
     text_with_errors = "Dies sind ein Beispielsatz mit einem Fehler."
-    is_error, original, corrected = grammarly(text_with_errors)
+    is_error, original, corrected = proofreader(text_with_errors)
     print("Error Detected:", is_error)
     print("Original Text:", original)
     print("Corrected Text:", corrected)
