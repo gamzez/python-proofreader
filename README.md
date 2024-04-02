@@ -1,4 +1,4 @@
-# ChatGPT-Based Proofreader
+# LLM-Based Proofreader
 
 This repository contains a Python-based proofreading tool that leverages OpenAI's GPT-3.5 model to correct grammatical errors in German texts. The tool not only identifies and corrects errors but also highlights the differences between the original and corrected texts.
 
